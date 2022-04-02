@@ -1,9 +1,12 @@
 import { useState } from 'react'
-import Auth from './server/index.js';
+//import Auth from '../backend/index';
+import {useNavigate} from 'react-router-dom'
+import Create_user from './components/Authentification/Create_user';
 function App() {
+    //let navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const handleOnSubmit = async (e) => {
+    const HandleOnSubmit = async (e) => {
         e.preventDefault();
         let result = await fetch(
         'http://localhost:5000/register', {
@@ -19,9 +22,13 @@ function App() {
             alert("Data saved successfully");
             setEmail("");
             setName("");
+            //useNavigate().push('../Authentification/Create_user');
+            handleClick();
         }
     }
+   
     return (
+        
         <>
             <h1>This is React WebApp </h1>
             <form action="">
@@ -30,11 +37,14 @@ function App() {
                 <input type="email" placeholder="email" 
                 value={email} onChange={(e) => setEmail(e.target.value)} />
                 <button type="submit" 
-                onClick={Auth(name,email)}>submit</button>
+                onClick={handleClick}>submit</button>
             </form>
 
         </>
     );
+    function handleClick() {
+        useNavigate.push('./components/Authentification/index_user');
+              }
 }
 
 export default App;

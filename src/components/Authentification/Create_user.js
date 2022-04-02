@@ -1,5 +1,8 @@
 import { useState } from 'react'
-function Auth() {
+//import Auth from '../backend/index';
+import {useNavigate} from 'react-router-dom'
+function Create_user() {
+    let navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const handleOnSubmit = async (e) => {
@@ -24,15 +27,14 @@ function Auth() {
         <>
             <h1>This is React WebApp </h1>
             <form action="">
-                <input type="text" placeholder="name" 
-                value={name} onChange={(e) => setName(e.target.value)} />
+               
                 <input type="email" placeholder="email" 
                 value={email} onChange={(e) => setEmail(e.target.value)} />
-                
+               
             </form>
 
         </>
     );
 }
 
-export default Auth;
+export default Create_user;
